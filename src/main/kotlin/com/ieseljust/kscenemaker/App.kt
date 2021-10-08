@@ -59,7 +59,75 @@ class App {
 
       }
 
-      // TO-DO: Afegir la resta de figures
+      "cercle" -> {
+        try {
+          val x = figura[1].toInt()
+          val y = figura[2].toInt()
+          val r = figura[3].toInt()
+          val color = figura[4]
+
+          // Si tot és correcte creem la figura rectangle
+          var nouCerc = Cercle(x, y, r, this.getColor(color))
+          // I l'afegim a la llista
+          escena.add(nouCerc)
+        } catch (err: Exception) {
+          println("\u001B[31m Arguments incorrectes \u001B[0m")
+        }
+
+      }
+
+      "linia" -> {
+        try {
+          val x = figura[1].toInt()
+          val y = figura[2].toInt()
+          val x2 = figura[3].toInt()
+          val y2 = figura[4].toInt()
+          val color = figura[5]
+
+          // Si tot és correcte creem la figura rectangle
+          var novLinia = Linia(x, y, x2, y2, this.getColor(color))
+          // I l'afegim a la llista
+          escena.add(novLinia)
+        } catch (err: Exception) {
+          println("\u001B[31m Arguments incorrectes \u001B[0m")
+        }
+
+      }
+
+      "quadrat" -> {
+        try {
+          val x = figura[1].toInt()
+          val y = figura[2].toInt()
+          val costat = figura[3].toInt()
+          val color = figura[4]
+
+          // Si tot és correcte creem la figura rectangle
+          var nouQuadrat = Quadrat(x, y, costat, this.getColor(color))
+          // I l'afegim a la llista
+          escena.add(nouQuadrat)
+        } catch (err: Exception) {
+          println("\u001B[31m Arguments incorrectes \u001B[0m")
+        }
+
+      }
+
+      "ellipse" -> {
+        try {
+          val x = figura[1].toInt()
+          val y = figura[2].toInt()
+          val r = figura[3].toInt()
+          val r2 = figura[4].toInt()
+          val color = figura[5]
+
+          // Si tot és correcte creem la figura rectangle
+          var novEllipse = Ellipse(x, y, r, r2, this.getColor(color))
+          // I l'afegim a la llista
+          escena.add(novEllipse)
+        } catch (err: Exception) {
+          println("\u001B[31m Arguments incorrectes \u001B[0m")
+        }
+
+      }
 
       else -> {
         println("\u001B[31m Figura no implementada \u001B[0m")
@@ -87,8 +155,8 @@ class App {
         }
 
         "dimensions" -> {
-          // TO-DO: Agafar les dimensions de l'ordre
-          // i modificar les propietats de l'escena
+          escena.tamX = components[1].toInt()
+          escena.tamY = components[2].toInt()
 
         }
         "list" -> escena.renderText()
@@ -135,10 +203,8 @@ class App {
                 }
 
                 "dimensions" -> {
-                  // TO-DO:
-                  // Modificar les dimensions de l'escena
-                  // especificades al fitxer
-
+                  escena.tamX = items[1].toInt()
+                  escena.tamY = items[2].toInt()
                 }
 
               }// When
